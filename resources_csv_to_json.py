@@ -28,8 +28,13 @@ def execute():
     if not output_file_name:
         output_file_name = 'resources.json'
     
+    json_data = {
+        'category_data': [{'id': v, 'name': k} for k, v in category_data.items()],
+        'data': data,
+    }
+
     with open(output_file_name, 'w') as json_file:
-        json_file.write(json.dumps(data, indent=4))
+        json_file.write(json.dumps(json_data, indent=4))
 
     print(f"Saved to {output_file_name}...")
 
